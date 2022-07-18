@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Open311cli;
@@ -24,5 +26,10 @@ public class Open311Item
             return dt; 
         else 
             return DateTime.MinValue; 
+    }
+
+    public static List<Open311Item> FromJson(string json)
+    {
+        return JsonSerializer.Deserialize<List<Open311Item>>(json);
     }
 }

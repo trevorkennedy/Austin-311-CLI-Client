@@ -1,4 +1,7 @@
-﻿namespace Open311cli;
+﻿using System.Collections.Generic;
+using System.Text.Json;
+
+namespace Open311cli;
 
 public class Open311Service
 {
@@ -8,4 +11,9 @@ public class Open311Service
     public bool metadata { get; set; }
     public string type { get; set; }
     public string group { get; set; }
+
+    public static List<Open311Service> FromJson(string json)
+    {
+        return JsonSerializer.Deserialize<List<Open311Service>>(json);
+    }
 }
